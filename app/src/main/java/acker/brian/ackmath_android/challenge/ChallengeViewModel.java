@@ -42,7 +42,7 @@ public class ChallengeViewModel extends BaseObservable {
 
     private void randomizeChallengeNumber() {
         Random random = new Random();
-        challengeNumber = random.nextInt(upperBound - lowerBound) + 1;
+        challengeNumber = random.nextInt(upperBound - lowerBound) + lowerBound;
         notifyPropertyChanged(BR.challengeText);
     }
 
