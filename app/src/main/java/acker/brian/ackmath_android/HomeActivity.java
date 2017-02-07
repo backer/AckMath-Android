@@ -26,8 +26,7 @@ public class HomeActivity extends BaseActivity {
         switch (event.getScreenType()) {
             case SQUARE_ROOT_CHALLENGE:
                 Intent intent = new Intent(getApplicationContext(), ChallengeActivity.class);
-                intent.putExtra(ChallengeActivity.EXTRA_LOWER_BOUND, event.getArgs().getInt(ChallengeActivity.EXTRA_LOWER_BOUND));
-                intent.putExtra(ChallengeActivity.EXTRA_UPPER_BOUND, event.getArgs().getInt(ChallengeActivity.EXTRA_UPPER_BOUND));
+                intent.putExtras(event.getArgs());
                 startActivity(intent);
                 break;
             default:

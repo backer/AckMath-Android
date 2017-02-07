@@ -29,7 +29,7 @@ public class FrontPageViewModel {
             Bundle args = new Bundle();
             args.putInt(ChallengeActivity.EXTRA_LOWER_BOUND, Integer.parseInt(lowerBound.getText().toString()));
             args.putInt(ChallengeActivity.EXTRA_UPPER_BOUND, Integer.parseInt(upperBound.getText().toString()));
-            EventBus.getDefault().post(new LaunchScreenEvent(LaunchScreenEvent.ScreenType.SQUARE_ROOT_CHALLENGE));
+            EventBus.getDefault().post(new LaunchScreenEvent(LaunchScreenEvent.ScreenType.SQUARE_ROOT_CHALLENGE, args));
         }
     }
 }
