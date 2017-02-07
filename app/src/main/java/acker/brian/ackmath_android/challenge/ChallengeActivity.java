@@ -21,15 +21,14 @@ public class ChallengeActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ChallengeBinding binding = DataBindingUtil.setContentView(this, R.layout.challenge);
         Intent intent = getIntent();
         if (intent == null) {
             // intent should never be null, but add a check just in case
             intent = new Intent();
         }
         ChallengeViewModel viewModel = new ChallengeViewModel(intent.getIntExtra(EXTRA_LOWER_BOUND, 1),
-                intent.getIntExtra(EXTRA_UPPER_BOUND, 100));
-        Log.v("ChallengeActivity", "Lower bound = " + getIntent().getIntExtra(EXTRA_LOWER_BOUND, -1) + " and upper bound = " + getIntent().getIntExtra(EXTRA_UPPER_BOUND, -1));
-        ChallengeBinding binding = DataBindingUtil.setContentView(this, R.layout.challenge);
+                intent.getIntExtra(EXTRA_UPPER_BOUND, 100), binding.answer);
         binding.setViewModel(viewModel);
     }
 }
