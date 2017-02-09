@@ -27,7 +27,7 @@ public class ChallengeActivity extends BaseActivity {
             // intent should never be null, but add a check just in case
             intent = new Intent();
         }
-        ChallengeViewModel viewModel = new ChallengeViewModel(intent.getIntExtra(EXTRA_LOWER_BOUND, 1),
+        ChallengeViewModel viewModel = new ChallengeViewModel(getResources(), intent.getIntExtra(EXTRA_LOWER_BOUND, 1),
                 intent.getIntExtra(EXTRA_UPPER_BOUND, 100), binding.answer);
         binding.setViewModel(viewModel);
     }
