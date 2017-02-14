@@ -3,16 +3,15 @@ package acker.brian.ackmath_android.challenge;
 import android.content.res.Resources;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.util.Log;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.EditText;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
+import acker.brian.ackmath_android.BR;
 import acker.brian.ackmath_android.R;
 import acker.brian.ackmath_android.utils.TextUtils;
-import acker.brian.ackmath_android.BR;
 
 /**
  * Created by Brian on 2/6/2017.
@@ -29,6 +28,8 @@ public class ChallengeViewModel extends BaseObservable {
     private EditText answerText;
     private int answerStatus;
     private Resources resources;
+    private long questionStartTime = 0;
+    double answerTime = 0;
 
     public ChallengeViewModel(Resources resources, int lowerBound, int upperBound, EditText answer) {
         this.lowerBound = lowerBound;
@@ -63,6 +64,11 @@ public class ChallengeViewModel extends BaseObservable {
     }
 
     @Bindable
+    public String getSuccessTimetext() {
+        return resources.getString(R.string.answer_time, answerText, String.valueOf(answerTime));
+    }
+
+    @Bindable
     public String getButtonText() {
         switch (answerStatus) {
             case STATUS_CORRECT:
@@ -83,6 +89,7 @@ public class ChallengeViewModel extends BaseObservable {
         notifyPropertyChanged(BR.successText);
         notifyPropertyChanged(BR.successVisibility);
         notifyPropertyChanged(BR.buttonText);
+        questionStartTime = SystemClock.elapsedRealtime();
     }
 
     public void onClickSubmit(View view) {
@@ -95,6 +102,7 @@ public class ChallengeViewModel extends BaseObservable {
                 case STATUS_UNANSWERED:
                 default:
                     int answer = Integer.parseInt(answerText.getText().toString());
+                    answerTime = ((SystemClock.elapsedRealtime() - questionStartTime) / 1000.0);
                     if (answer == challengeNumber) {
                         answerStatus = STATUS_CORRECT;
                     } else {
@@ -103,6 +111,7 @@ public class ChallengeViewModel extends BaseObservable {
                     notifyPropertyChanged(BR.successVisibility);
                     notifyPropertyChanged(BR.successText);
                     notifyPropertyChanged(BR.buttonText);
+                    notifyPropertyChanged(BR.successTimetext);
                     break;
             }
         }
