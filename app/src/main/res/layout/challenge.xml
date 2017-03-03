@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.successTimetext}"
-            android:visibility="@{viewModel.successVisibility}" />
+            android:visibility="@{viewModel.successTimeVisibility}" />
 
         <Button
             android:layout_width="wrap_content"

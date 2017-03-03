@@ -69,6 +69,11 @@ public class ChallengeViewModel extends BaseObservable {
     }
 
     @Bindable
+    public int getSuccessTimeVisibility() {
+        return answerStatus == STATUS_CORRECT ? View.VISIBLE : View.INVISIBLE;
+    }
+
+    @Bindable
     public String getButtonText() {
         switch (answerStatus) {
             case STATUS_CORRECT:
@@ -89,6 +94,7 @@ public class ChallengeViewModel extends BaseObservable {
         notifyPropertyChanged(BR.successText);
         notifyPropertyChanged(BR.successVisibility);
         notifyPropertyChanged(BR.buttonText);
+        notifyPropertyChanged(BR.successTimeVisibility);
         questionStartTime = SystemClock.elapsedRealtime();
     }
 
@@ -112,6 +118,7 @@ public class ChallengeViewModel extends BaseObservable {
                     notifyPropertyChanged(BR.successText);
                     notifyPropertyChanged(BR.buttonText);
                     notifyPropertyChanged(BR.successTimetext);
+                    notifyPropertyChanged(BR.successTimeVisibility);
                     break;
             }
         }
