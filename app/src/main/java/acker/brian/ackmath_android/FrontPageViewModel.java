@@ -6,7 +6,7 @@ import android.widget.EditText;
 
 import org.greenrobot.eventbus.EventBus;
 
-import acker.brian.ackmath_android.challenge.ChallengeActivity;
+import acker.brian.ackmath_android.challenge.ChallengeFragment;
 import acker.brian.ackmath_android.event.LaunchScreenEvent;
 import acker.brian.ackmath_android.utils.TextUtils;
 
@@ -30,8 +30,8 @@ public class FrontPageViewModel {
             int lower = Integer.parseInt(lowerBound.getText().toString());
             int upper = Integer.parseInt(upperBound.getText().toString());
             if (validateBounds(lower, upper)) {
-                args.putInt(ChallengeActivity.EXTRA_LOWER_BOUND, lower);
-                args.putInt(ChallengeActivity.EXTRA_UPPER_BOUND, upper);
+                args.putInt(ChallengeFragment.LOWER_BOUND, lower);
+                args.putInt(ChallengeFragment.UPPER_BOUND, upper);
                 EventBus.getDefault().post(new LaunchScreenEvent(LaunchScreenEvent.ScreenType.SQUARE_ROOT_CHALLENGE,
                         args));
             }
