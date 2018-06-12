@@ -1,9 +1,8 @@
 package acker.brian.ackmath_android
 
-import acker.brian.ackmath_android.challenge.ChallengeActivity
+import acker.brian.ackmath_android.challenge.ChallengeFragment
 import acker.brian.ackmath_android.event.LaunchScreenEvent
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -16,6 +15,7 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container, HomeFragment())
+                .addToBackStack("root")
                 .commit()
     }
 
@@ -33,9 +33,12 @@ class MainActivity : Activity() {
     fun onEvent(event: LaunchScreenEvent) {
         when (event.screenType) {
             LaunchScreenEvent.ScreenType.SQUARE_ROOT_CHALLENGE -> {
-                val intent = Intent(getApplicationContext(), ChallengeActivity::class.java)
-                intent.putExtras(event.args)
-                startActivity(intent)
+                val challengeFragment = ChallengeFragment()
+                challengeFragment.arguments = event.args
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, challengeFragment)
+                        .addToBackStack(challengeFragment.tag)
+                        .commit()
             }
             else -> {
             }
