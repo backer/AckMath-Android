@@ -2,8 +2,8 @@ package acker.brian.ackmath_android
 
 import acker.brian.ackmath_android.challenge.ChallengeFragment
 import acker.brian.ackmath_android.event.LaunchScreenEvent
-import acker.brian.ackmath_android.utils.TextUtils
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import org.greenrobot.eventbus.EventBus

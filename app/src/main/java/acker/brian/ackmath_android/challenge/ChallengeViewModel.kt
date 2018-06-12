@@ -2,11 +2,11 @@ package acker.brian.ackmath_android.challenge
 
 import acker.brian.ackmath_android.BR
 import acker.brian.ackmath_android.R
-import acker.brian.ackmath_android.utils.TextUtils
 import android.content.res.Resources
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.os.SystemClock
+import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import java.util.*
