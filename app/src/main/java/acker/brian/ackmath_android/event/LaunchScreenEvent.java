@@ -30,6 +30,10 @@ public class LaunchScreenEvent {
         return screenType;
     }
 
+    public void setScreenType(ScreenType screenType) {
+        this.screenType = screenType;
+    }
+
     public Bundle getArgs() {
         return args;
     }

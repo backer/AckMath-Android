@@ -1,12 +1,13 @@
 package acker.brian.ackmath_android;
 
 import android.app.Activity;
-import android.app.usage.UsageEvents;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import acker.brian.ackmath_android.event.LaunchScreenEvent;
-import de.greenrobot.event.EventBus;
+
 
 public abstract class BaseActivity extends Activity {
 
@@ -27,7 +28,8 @@ public abstract class BaseActivity extends Activity {
         EventBus.getDefault().unregister(this);
     }
 
+    @Subscribe
     public void onEvent(LaunchScreenEvent event) {
-
+        // empty onEvent method to prevent EventBusException in case child activity does not listen for events
     }
 }
