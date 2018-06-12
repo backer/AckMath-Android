@@ -44,4 +44,12 @@ class MainActivity : Activity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        if (fragmentManager.backStackEntryCount <= 1) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
+    }
 }
